@@ -2,7 +2,6 @@ package com.kuang.config;
 
 import com.kuang.bean.Person;
 import org.springframework.context.annotation.*;
-import org.springframework.stereotype.Service;
 
 /**
  * 配置类=配置文件
@@ -15,7 +14,19 @@ import org.springframework.stereotype.Service;
 //@ComponentScan(value = "com.kuang", includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {
 //        Controller.class
 //})}, useDefaultFilters = false)
-@ComponentScans(value = {@ComponentScan(value = "com.kuang", includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Service.class})})})
+@ComponentScans(
+        value = {
+                @ComponentScan(
+                        value = "com.kuang",
+                        includeFilters = {
+//                                @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class}),
+//                                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {BookService.class}),
+                                @ComponentScan.Filter(type = FilterType.CUSTOM, classes = {MyTypeFilter.class})
+                                // @ComponentScan.Filter(type = FilterType.ASPECTJ,classes = {}), 这个一般不用
+                                // @ComponentScan.Filter(type = FilterType.REGEX,classes = {}) 正则表达式
+
+                        }, useDefaultFilters = false)
+        })
 public class MainConfig {
 
     /**
