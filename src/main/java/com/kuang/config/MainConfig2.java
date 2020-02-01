@@ -2,7 +2,6 @@ package com.kuang.config;
 
 import com.kuang.bean.Person;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
 
 public class MainConfig2 {
 
@@ -15,11 +14,12 @@ public class MainConfig2 {
      *
      * @return
      */
-    @Scope("prototype")
+//    @Scope("prototype")
 //    @Scope(scopeName = "singleton")
+//    @Lazy
     @Bean(value = "person")
     public Person person() {
-        System.out.println("this is before new person");
+        System.out.println("this is new person");
         Person person = new Person();
         person.setName("kuang02");
         person.setAge(25);

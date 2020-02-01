@@ -32,3 +32,12 @@
 - Prototype 每次都New一个新的实例
 - Request 同一个请求创建一个实例？？？
 - Session 同一个session创建一个实例？？？
+
+## @Lazy
+**查看MainConfig，IOCTest的test2方法**
+
+针对于@Scope是Singleton的情况下
+
+单实例的bean在容器启动的时候初始化
+
+懒加载之后就是实际调用的时候才初始化
