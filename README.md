@@ -55,7 +55,7 @@
 @Conditional可以加在类上，也可以加在方法上
 
 ## @Import
-**查看MainConfig3，IOCTest的testImport方法，MyImportSelector**
+**查看MainConfig3，IOCTest的testImport方法，MyImportSelector，ColorBeanFactory**
 
 给容器中注册组件
 - 包扫描+组件标注注解（@Controller/@Service/@Repository/@Component）
@@ -67,3 +67,18 @@
 - 使用Spring提供的FactoryBean（工厂bean）
     1. 默认获取的bean是factory中的getObject对象
     2. 如果想获取工厂bean，则在名称前面添加&
+
+## Bean的生命周期 @Bean
+1. 指定初始化和销毁，通过@Bean（**查看Car，IOCTestLifeCycle还有MainConfigOfLifeCycle**）
+    - 如果是单实例的bean，在容器启动的时候创建对象
+        1. 通过@Bean的initMethod, destroyMethod进行初始化和销毁
+    - 如果是多实例的bean，在获取对象的时候创建对象
+        1. 通过@Bean的initMethod进行初始化
+        2. 容器不会调用销毁方法，需要自己手动销毁
+2. 通过让Bean实现InitializingBean，DisposableBean进行创建和销毁（**查看Cat，IOCTestLifeCycle还有MainConfigOfLifeCycle**）
+3. 通过使用JSR250中的注解（**查看Dog，IOCTestLifeCycle还有MainConfigOfLifeCycle**）
+    - @PostConstruct 初始化
+    - @PreDestroy 销毁
+4. BeanPostProcessor，bean的后置处理器，在bean的初始化前后进行处理工作（**查看MyBeanPostProcessor，IOCTestLifeCycle还有MainConfigOfLifeCycle**）
+    - postProcessBeforeInitialization 在初始化之前调用
+    - postProcessAfterInitialization 在初始化之后调用
