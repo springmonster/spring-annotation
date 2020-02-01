@@ -4,6 +4,10 @@
 ## @Configuration和@Bean
 **查看MainConfig**
 
+[@Configuration解释1](https://blog.csdn.net/u012260707/article/details/52021265)
+
+[@Configuration解释2，原理](https://www.jianshu.com/p/666c11b91b20)
+
 @Configuration对应的就是xml文件
 
 @Bean对应的就是xml中的bean
@@ -34,6 +38,9 @@
 
 ## @Scope
 **查看MainConfig2，IOCTest的test2方法**
+
+[@Scope解释1](https://www.jianshu.com/p/852eae3b08d4)
+
 - Singleton 单例，感觉是享元模式？？？
 - Prototype 每次都New一个新的实例
 - Request 同一个请求创建一个实例？？？
@@ -41,6 +48,10 @@
 
 ## @Lazy
 **查看MainConfig2，IOCTest的test2方法**
+
+[@Lazy解释1](https://blog.csdn.net/u014677702/article/details/86687311)
+
+[@Lazy解释2](https://www.jianshu.com/p/9072400fac94)
 
 针对于@Scope是Singleton的情况下
 
@@ -52,6 +63,10 @@
 
 **查看MainConfig2，IOCTest的test3方法，LinuxCondition，WindowsCondition**
 
+[@Conditional解释1](https://blog.csdn.net/xcy1193068639/article/details/81491071)
+
+[@Conditional解释2](https://www.jianshu.com/p/566f22bda03c)
+
 @Conditional后面需要有实现了Condition接口的实现类，满足条件的bean才会被托管
 
 这里可以配置VM Options的参数，例如：-Dos.name=Linux
@@ -60,6 +75,10 @@
 
 ## @Import
 **查看MainConfig3，IOCTest的testImport方法，MyImportSelector，ColorBeanFactory**
+
+[@Import解释1](https://www.jianshu.com/p/56d4cadbe5c9)
+
+[@Import解释2](https://www.jianshu.com/p/7eb0c2b214a7)
 
 给容器中注册组件
 - 包扫描+组件标注注解（@Controller/@Service/@Repository/@Component）
@@ -73,6 +92,11 @@
     2. 如果想获取工厂bean，则在名称前面添加&
 
 ## Bean的生命周期 @Bean
+
+[bean生命周期解释1](https://www.jianshu.com/p/ebbb129612ec)
+
+[bean生命周期解释2](https://www.jianshu.com/p/1dec08d290c1)
+
 1. 指定初始化和销毁，通过@Bean（**查看Car，IOCTestLifeCycle还有MainConfigOfLifeCycle**）
     - 如果是单实例的bean，在容器启动的时候创建对象
         1. 通过@Bean的initMethod, destroyMethod进行初始化和销毁
