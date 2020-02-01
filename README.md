@@ -15,6 +15,10 @@
 ## @ComponentScan和@ComponentScans
 **查看MainConfig**
 
+[@ComponentScan解释1](https://blog.csdn.net/luojinbai/article/details/85877956)
+
+[@ComponentScan解释2](https://www.jianshu.com/p/64aac6461d5b)
+
 @ComponentScan对应xml中<context:component-scan base-package=""/>标签
 
 将扫描到的带@Component，@Controller，@Service，@Repository的注解托管给Spring容器
