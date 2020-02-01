@@ -1,3 +1,5 @@
+[toc]
+
 # Spring Annotation
 ## @Configuration和@Bean
 **查看MainConfig**
@@ -51,3 +53,17 @@
 这里可以配置VM Options的参数，例如：-Dos.name=Linux
 
 @Conditional可以加在类上，也可以加在方法上
+
+## @Import
+**查看MainConfig3，IOCTest的testImport方法，MyImportSelector**
+
+给容器中注册组件
+- 包扫描+组件标注注解（@Controller/@Service/@Repository/@Component）
+- @Bean 导入第三方包里面的组件
+- @Import 快速给容器导入组件
+    1. @Import({类})，id默认是全类名
+    2. ImportSelector，返回需要导入的组件的全类名的数组
+    3. ImportBeanDefinitionRegistrar，手动注册bean
+- 使用Spring提供的FactoryBean（工厂bean）
+    1. 默认获取的bean是factory中的getObject对象
+    2. 如果想获取工厂bean，则在名称前面添加&
