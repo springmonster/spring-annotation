@@ -27,17 +27,27 @@
 这里需要把useDefaultFilters设置为false
 
 ## @Scope
-**查看MainConfig，IOCTest的test2方法**
+**查看MainConfig2，IOCTest的test2方法**
 - Singleton 单例，感觉是享元模式？？？
 - Prototype 每次都New一个新的实例
 - Request 同一个请求创建一个实例？？？
 - Session 同一个session创建一个实例？？？
 
 ## @Lazy
-**查看MainConfig，IOCTest的test2方法**
+**查看MainConfig2，IOCTest的test2方法**
 
 针对于@Scope是Singleton的情况下
 
 单实例的bean在容器启动的时候初始化
 
 懒加载之后就是实际调用的时候才初始化
+
+## @Conditional
+
+**查看MainConfig2，IOCTest的test3方法，LinuxCondition，WindowsCondition**
+
+@Conditional后面需要有实现了Condition接口的实现类，满足条件的bean才会被托管
+
+这里可以配置VM Options的参数，例如：-Dos.name=Linux
+
+@Conditional可以加在类上，也可以加在方法上

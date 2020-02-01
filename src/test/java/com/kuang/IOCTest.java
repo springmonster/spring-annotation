@@ -31,4 +31,13 @@ public class IOCTest {
         Person bean1 = annotationConfigApplicationContext.getBean(Person.class);
 ////        System.out.println(bean == bean1);
     }
+
+    @Test
+    public void test03() {
+        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(MainConfig2.class);
+        String[] names = annotationConfigApplicationContext.getBeanNamesForType(Person.class);
+        for (String name : names) {
+            System.out.println(name);
+        }
+    }
 }
