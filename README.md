@@ -110,3 +110,30 @@
 4. BeanPostProcessor，bean的后置处理器，在bean的初始化前后进行处理工作（**查看MyBeanPostProcessor，IOCTestLifeCycle还有MainConfigOfLifeCycle**）
     - postProcessBeforeInitialization 在初始化之前调用
     - postProcessAfterInitialization 在初始化之后调用
+
+## @Value
+**查看IOCTestPropertyValue，person以及person.properties**
+
+1. 基本数值
+2. 可以写SpEL，#{}
+3. 可以写${}，取出配置文件中（properties）的值（在运行环境变量里面的值）
+    - @PropertySource 指定property文件的位置
+    - @PropertySources 指定多个property文件
+
+properties中的值，其实就是
+```java
+ ConfigurableEnvironment configurableEnvironment = annotationConfigApplicationContext.getEnvironment();
+ String property = configurableEnvironment.getProperty("person.nickName");
+```
+
+## 自动加载
+**查看IOCTestPropertyValue，person以及person.properties**
+### @Autowired
+1. 默认优先按照类型去容器中找对应的组件 applicationContext.getBean(BookDao.class);
+2. 如果找到多个相同类型的组件，再将属性的名称作为组件id去容器中查找 application
+.getBean("bookDao")
+3. @Qualifier("bookDao")，使用@Qualifier指定需要装配的组件id，而不是使用属性名
+4. 自动装配默认一定要将属性赋值好，没有就报错
+5. 结合@Autowired，required=false，就不是必须的，不报错
+6. @Primary，让Spring自动装配的时候，首选的bean，如果还有@Qualifier，那么就装配@Qualifier的值
+###
