@@ -131,10 +131,15 @@ properties中的值，其实就是
 
 ## 自动加载
 **查看IOCTestPropertyValue，person以及person.properties**
-### @Autowired
+### @Autowired(Spring规范)
 [@Autowired解释1](https://blog.csdn.net/u014677702/article/details/86687212)
 
 [@Autowired解释2](https://www.jianshu.com/p/931cdba58cf7)
+
+[构造器循环依赖](https://blog.csdn.net/revivedsun/article/details/84642316)
+
+[循环依赖](https://cloud.tencent.com/developer/article/1497692)
+
 1. 默认优先按照类型去容器中找对应的组件 applicationContext.getBean(BookDao.class);
 2. 如果找到多个相同类型的组件，再将属性的名称作为组件id去容器中查找 application
 .getBean("bookDao")
@@ -142,4 +147,29 @@ properties中的值，其实就是
 4. 自动装配默认一定要将属性赋值好，没有就报错
 5. 结合@Autowired，required=false，就不是必须的，不报错
 6. @Primary，让Spring自动装配的时候，首选的bean，如果还有@Qualifier，那么就装配@Qualifier的值
-###
+
+**查看Boss类**
+- @Target({ElementType.CONSTRUCTOR, ElementType.METHOD, ElementType.PARAMETER, ElementType.FIELD, ElementType.ANNOTATION_TYPE})
+- 在方法上写@Autowired，或者在参数上写@Autowired
+- 写在有参构造器上@Autowired，如果只有一个有参的构造器，那么@Autowired可以省略
+- @Bean+方法参数，默认不写@Autowired，都可以从容器中拿到bean
+
+### @Resource(JSR250)
+默认按照组件名称进行加载
+
+不支持@Primary，不支持@Autowired(required=false)
+### @Inject(JSR330)
+导入javax.inject的包，和@Autowired一样
+
+### 自定义组件想使用Spring容器底层的一些组件（ApplicationContext，BeanFactory，xxx）
+**查看Red类**
+
+[Aware解释1](https://blog.csdn.net/javaloveiphone/article/details/52143126)
+
+自定义组件实现xxxAware，在创建对象的时候，会调用接口规定的方法注入相关组件
+
+把Spring底层一切组件注入到自定义Bean中
+
+是xxxProcessor处理，ApplicationContextAware=>ApplicationContextAwareProcessor
+
+
