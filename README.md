@@ -114,11 +114,14 @@
 ## @Value
 **查看IOCTestPropertyValue，person以及person.properties**
 
+[@PropertySource解释1](https://www.cnblogs.com/whx7762/p/7885735.html)
+
 1. 基本数值
 2. 可以写SpEL，#{}
 3. 可以写${}，取出配置文件中（properties）的值（在运行环境变量里面的值）
     - @PropertySource 指定property文件的位置
     - @PropertySources 指定多个property文件
+4. ignoreResourceNotFound
 
 properties中的值，其实就是
 ```java
@@ -129,6 +132,9 @@ properties中的值，其实就是
 ## 自动加载
 **查看IOCTestPropertyValue，person以及person.properties**
 ### @Autowired
+[@Autowired解释1](https://blog.csdn.net/u014677702/article/details/86687212)
+
+[@Autowired解释2](https://www.jianshu.com/p/931cdba58cf7)
 1. 默认优先按照类型去容器中找对应的组件 applicationContext.getBean(BookDao.class);
 2. 如果找到多个相同类型的组件，再将属性的名称作为组件id去容器中查找 application
 .getBean("bookDao")
