@@ -172,4 +172,16 @@ properties中的值，其实就是
 
 是xxxProcessor处理，ApplicationContextAware=>ApplicationContextAwareProcessor
 
+## @Profile
+**查看IOCTestProfile，color.properties，mydatasource.properties，MainConfigOfProfile，MainConfigOfProfile1，
+Yellow，MyDataSource**
+
+Spring提供的激活和切换一系列组件的功能
+
+指定组件在哪个环境的情况下才能被注册到容器中，不指定，任何环境下都能注册这个组件
+
+如何配置使profile生效
+1. 通过命令行参数，VM Options，-Dspring.profiles.active=test
+2. 代码方式激活某种环境，查看IOCTestProfile test02
+3. 加载配置类上，只有是指定环境的时候，整个配置类中的所有配置才能生效
 
