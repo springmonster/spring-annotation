@@ -111,6 +111,8 @@
     - postProcessBeforeInitialization 在初始化之前调用
     - postProcessAfterInitialization 在初始化之后调用
 
+## @PropertySource
+
 ## @Value
 **查看IOCTestPropertyValue，person以及person.properties**
 
